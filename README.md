@@ -145,7 +145,7 @@ flowchart TD
     M --> P{Lead agenda?}
     P -->|No| I
     P -->|Si| N[Cal.com confirma booking]
-    N --> O[/api/calcom]
+    N --> O["/api/calcom"]
     O --> Q[Kommo actualiza estado Agendado]
     Q --> R[WhatsApp confirmacion]
     R --> S[Recordatorio 24h antes (WhatsApp)]
