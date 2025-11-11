@@ -1,4 +1,4 @@
-"""Rutas principales para recepción de leads y webhooks."""
+#~~Rutas principales para recepción de leads y webhooks.
 from __future__ import annotations
 
 import os

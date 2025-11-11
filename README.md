@@ -122,14 +122,35 @@ Cada acción (Kommo, correo, llamada, WhatsApp/SMS) se imprime en consola y se g
 ## Diagrama de flujo (Mermaid)
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[Formulario / Ads] -->|POST /api/lead| B[Flask API]
-    B --> C[Kommo CRM]
-    B --> D[Sendinblue Email]
-    B --> E[Twilio Voice]
-    E -->|Falla o sin respuesta| F[Twilio WhatsApp/SMS]
-    G[Cal.com Booking] -->|POST /api/calcom| B
-    B -->|PATCH| C
+    B --> C[Validar y registrar contacto/lead]
+    C --> D[Kommo CRM (estado Nuevo)]
+    B --> E[Sendinblue / Gmail - correo bienvenida]
+    B --> F[Twilio Voice - llamada Javier Virtual]
+    F -->|contesta| G[Mensaje grabado invita a agendar]
+    F -->|no contesta| H[Buzón + WhatsApp/SMS automático]
+    D --> I[Log en data/actions_log.json]
+    E --> I
+    F --> I
+    G --> I
+    H --> I
+    subgraph "Seguimiento programado"
+        J[Día 3: WhatsApp “¿Pudiste agendar?”]
+        K[Día 6: Correo con regalo de valor]
+        L[Día 9: Correo con CTA fuerte]
+        M[Día 12: WhatsApp personal de Javier]
+    end
+    I --> J --> K --> L --> M
+    M --> P{Lead agenda?}
+    P -->|No| I
+    P -->|Sí| N[Cal.com confirma booking]
+    N --> O[/api/calcom]
+    O --> Q[Kommo actualiza estado “Agendado”]
+    Q --> R[WhatsApp confirmación]
+    R --> S[Recordatorio 24h antes (WhatsApp)]
+    S --> T[Post-reunión + encuesta/material extra]
+    Q --> I
 ```
 
 ## Estructura

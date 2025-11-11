@@ -1,11 +1,9 @@
-"""Aplicación Flask para automatización de leads."""
 from flask import Flask, jsonify
 from dotenv import load_dotenv
 
-# Carga variables de entorno antes de importar el resto de módulos
 load_dotenv()
 
-from routes.leads import leads_bp  # noqa: E402
+from routes.leads import leads_bp  
 
 
 def create_app() -> Flask:
