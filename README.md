@@ -125,7 +125,7 @@ Cada acción (Kommo, correo, llamada, WhatsApp/SMS) se imprime en consola y se g
 flowchart TD
     A[Formulario / Ads] -->|POST /api/lead| B[Flask API]
     B --> C[Validar y registrar contacto/lead]
-    C --> D[Kommo CRM (estado Nuevo)]
+    C --> D[Kommo CRM / estado Nuevo]
     B --> E[Sendinblue / Gmail - correo bienvenida]
     B --> F[Twilio Voice - llamada Javier Virtual]
     F -->|contesta| G[Mensaje grabado invita a agendar]
