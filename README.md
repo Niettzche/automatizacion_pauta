@@ -136,10 +136,10 @@ flowchart TD
     G --> I
     H --> I
     subgraph Seguimiento programado
-    J[Dia 3: WhatsApp "Pudiste agendar?"]
-        K[Dia 6: Correo con regalo de valor]
-        L[Dia 9: Correo con CTA fuerte]
-        M[Dia 12: WhatsApp personal de Javier]
+        J[Dia 3 WhatsApp Pudiste agendar?]
+        K[Dia 6 Correo con regalo de valor]
+        L[Dia 9 Correo con CTA fuerte]
+        M[Dia 12 WhatsApp personal de Javier]
     end
     I --> J --> K --> L --> M
     M --> P{Lead agenda?}
